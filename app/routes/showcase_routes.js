@@ -16,7 +16,7 @@ module.exports = function(app, db) {
       }
     });
   });
-  app.get('/showcaseApps/', (req, res) => {
+  app.get('/showcaseApps', (req, res) => {
 
     db.collection('projects').find({}).toArray((err, item) => {
       if (err) {
