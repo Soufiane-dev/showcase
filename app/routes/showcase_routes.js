@@ -27,7 +27,15 @@ module.exports = function(app, db) {
     });
   });
 app.post('/showcaseApps', (req, res) => {
-    const project = { title: req.body.title, logo: req.body.logo, author: req.body.author, description: req.body.description, createdAt: req.body.createdAt, qrUrl: req.body.qrUrl };
+    const project = {
+      title: req.body.title,
+      logo: req.body.logo,
+      author: req.body.author,
+      description: req.body.description,
+      createdAt: req.body.createdAt,
+      qrUrl: req.body.qrUrl
+    };
+
     db.collection('projects').insert(project, (err, result) => {
       if (err) {
         res.send({ 'error': 'An error has occurred' });
@@ -36,6 +44,7 @@ app.post('/showcaseApps', (req, res) => {
       }
     });
   });
+
   app.put('/showcaseApps/:id', (req, res) => {
       const id = req.params.id;
       const details = { '_id': new ObjectID(id) };
@@ -84,7 +93,10 @@ app.post('/showcaseApps', (req, res) => {
       });
 
       app.post('/authors', (req, res) => {
-          const author = { fullName: req.body.fullname, email: req.body.email};
+          const author = {
+            fullName: req.body.fullname,
+            email: req.body.email
+          };
           db.collection('authors').insert(author, (err, result) => {
             if (err) {
               res.send({ 'error': 'An error has occurred' });
@@ -93,6 +105,7 @@ app.post('/showcaseApps', (req, res) => {
             }
           });
         });
+
         app.delete('/authors/:id', (req, res) => {
             const id = req.params.id;
             const details = { '_id': new ObjectID(id) };
@@ -104,10 +117,14 @@ app.post('/showcaseApps', (req, res) => {
               }
             });
           });
+
           app.put('/authors/:id', (req, res) => {
               const id = req.params.id;
               const details = { '_id': new ObjectID(id) };
-              const author = {fullName: req.body.fullname, email: req.body.email};
+              const author = {
+                fullName: req.body.fullname,
+                email: req.body.email
+              };
               db.collection('authors').update(details, author, (err, result) => {
                 if (err) {
                     res.send({'error':'An error has occurred'});
@@ -117,7 +134,7 @@ app.post('/showcaseApps', (req, res) => {
               });
             });
 
-        //Concering Screenshots
+        //Concerning Screenshots
 
         app.get('/screenshots/', (req, res) => {
           db.collection('screenshots').find({}).toArray((err, item) => {
@@ -130,7 +147,11 @@ app.post('/showcaseApps', (req, res) => {
         });
 
         app.post('/screenshots', (req, res) => {
-            const screens = {url1 : req.body.url1, url2 : req.body.url2 , url3 : req.body.url3};
+            const screens = {
+              url1 : req.body.url1,
+              url2 : req.body.url2 ,
+              url3 : req.body.url3
+            };
             db.collection('screenshots').insert(screens, (err, result) => {
               if (err) {
                 res.send({ 'error': 'An error has occurred' });
@@ -154,7 +175,11 @@ app.post('/showcaseApps', (req, res) => {
             app.put('/screenshots/:id', (req, res) => {
                 const id = req.params.id;
                 const details = { '_id': new ObjectID(id) };
-                const screens = {url1 : req.body.url1, url2 : req.body.url2 , url3 : req.body.url3};
+                const screens = {
+                  url1 : req.body.url1,
+                  url2 : req.body.url2 ,
+                  url3 : req.body.url3
+                };
                 db.collection('screenshots').update(details, screens, (err, result) => {
                   if (err) {
                       res.send({'error':'An error has occurred'});
@@ -163,6 +188,7 @@ app.post('/showcaseApps', (req, res) => {
                   }
                 });
               });
+
           // Concerning store
           app.get('/store/', (req, res) => {
             db.collection('store').find({}).toArray((err, item) => {
@@ -210,7 +236,6 @@ app.post('/showcaseApps', (req, res) => {
 
 
               ////////////////////////////////////////
-
 
               app.put('/store/:id', (req, res) => {
                   const id = req.params.id;

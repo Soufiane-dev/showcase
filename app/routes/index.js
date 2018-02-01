@@ -1,6 +1,6 @@
 // routes/index.js
-const noteRoutes = require('./showcase_routes');
+const showcaseRoutes = require('./showcase_routes');
 module.exports = function(app, db) {
- noteRoutes(app, db);
+ showcaseRoutes(app, db);
  // Other route groups could go here, in the future
 };
