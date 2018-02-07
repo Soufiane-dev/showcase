@@ -1,2 +1,5 @@
-# showcase
-#ADD .env file  with PORT= DBUSERNAME= DBPASSWORD =
+# SHOWCASE
+ADD .env file  with 
+PORT= 
+DBUSERNAME= 
+DBPASSWORD =
