@@ -1,9 +1,13 @@
 // Showcase_Routes.js
 
 var ObjectID = require('mongodb').ObjectID;
-
+var dateTime = require('node-datetime');
 module.exports = function(app, db) {
   // Concerning projects
+
+  var dt = dateTime.create();
+  var dateFormatted = dt.format('Y-m-d H:M:S');
+
 
     app.get('/showcaseApps/:id', (req, res) => {
     const id = req.params.id;
@@ -27,12 +31,13 @@ module.exports = function(app, db) {
     });
   });
 app.post('/showcaseApps', (req, res) => {
+
     const project = {
       title: req.body.title,
       logo: req.body.logo,
       author: req.body.author,
       description: req.body.description,
-      createdAt: req.body.createdAt,
+      createdAt: dateFormatted,
       qrUrl: req.body.qrUrl
     };
 
@@ -53,7 +58,7 @@ app.post('/showcaseApps', (req, res) => {
         logo: req.body.logo,
         author: req.body.author,
         description: req.body.description,
-        createdAt: req.body.createdAt,
+        createdAt: dateFormatted,
         qrUrl: req.body.qrUrl
       };
 
